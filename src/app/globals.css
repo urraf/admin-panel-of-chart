@@ -241,6 +241,21 @@ body {
   padding: 0px;
 }
 
+/* Fix gap on left and right sides of charts */
+.newtable .container-fluid,
+.tablebox1 .container-fluid,
+.tabel3 .container-fluid {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.newtable .row,
+.tablebox1 .row,
+.tabel3 .row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
 .octoberresultchart {
   padding: 20px 0px;
   color: #d1ff2b;
