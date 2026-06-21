@@ -287,7 +287,7 @@ export default function AdminPage() {
       {msg && <div style={{ background: '#25d366', color: '#fff', padding: '10px', borderRadius: '5px', textAlign: 'center', marginBottom: '15px', fontWeight: 700 }}>{msg}</div>}
 
       <div className="admin-nav">
-        {['dashboard', 'results', 'grid', 'games', 'advertisements', 'settings'].map(tab => (
+        {['dashboard', 'results', 'grid', 'games', 'advertisements', 'settings', 'highlights'].map(tab => (
           <button key={tab} className={activeTab === tab ? 'active' : ''} onClick={() => setActiveTab(tab)}>
             {tab === 'dashboard' && '📊 '}
             {tab === 'results' && '🎯 '}
@@ -295,6 +295,7 @@ export default function AdminPage() {
             {tab === 'games' && '🎮 '}
             {tab === 'advertisements' && '📢 '}
             {tab === 'settings' && '⚙️ '}
+            {tab === 'highlights' && '✨ '}
             {tab.charAt(0).toUpperCase() + tab.slice(1)}
           </button>
         ))}
@@ -585,12 +586,23 @@ export default function AdminPage() {
               <label>Disclaimer Text</label>
               <textarea className="admin-textarea" value={disclaimer} onChange={e => setDisclaimer(e.target.value)} />
             </div>
+            <button type="submit" className="admin-btn">Save Settings</button>
+          </form>
+        </div>
+      )}
+
+      {/* HIGHLIGHTS */}
+      {activeTab === 'highlights' && (
+        <div className="admin-card">
+          <h3>Highlights & Special Boxes</h3>
+          <form onSubmit={handleSaveSettings}>
+            <h4 style={{borderBottom: '1px solid #ccc', paddingBottom: '10px'}}>Flash Result</h4>
             <div className="admin-form-group">
-              <label>Flash Result Game Name (e.g. GALI)</label>
+              <label>Game Name (e.g. GALI)</label>
               <input type="text" className="admin-input" value={flashResultName} onChange={e => setFlashResultName(e.target.value)} placeholder="Leave blank to hide the box" />
             </div>
             <div className="admin-form-group">
-              <label>Flash Result Number (e.g. 61)</label>
+              <label>Result Number (e.g. 61)</label>
               <input type="text" className="admin-input" value={flashResultNumber} onChange={e => setFlashResultNumber(e.target.value)} placeholder="e.g. 61 or -" />
             </div>
 
@@ -624,8 +636,7 @@ export default function AdminPage() {
               </div>
             </div>
 
-
-            <button type="submit" className="admin-btn">Save Settings</button>
+            <button type="submit" className="admin-btn">Save Highlights</button>
           </form>
         </div>
       )}
