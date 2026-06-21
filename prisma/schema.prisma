@@ -1,0 +1,76 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Game {
+  id            Int      @id @default(autoincrement())
+  name          String
+  time          String
+  display_order Int      @default(0)
+  is_active     Boolean  @default(true)
+  created_at    DateTime @default(now())
+  results       Result[]
+  chart_group_games ChartGroupGame[]
+}
+
+model Result {
+  id         Int      @id @default(autoincrement())
+  game_id    Int
+  date       DateTime @db.Date
+  result     String   @default("-")
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  game       Game     @relation(fields: [game_id], references: [id], onDelete: Cascade)
+
+  @@unique([game_id, date])
+  @@index([date])
+  @@index([game_id])
+}
+
+model Advertisement {
+  id            Int      @id @default(autoincrement())
+  title         String
+  content       String   @db.Text
+  whatsapp_number String
+  display_order Int      @default(0)
+  is_active     Boolean  @default(true)
+  created_at    DateTime @default(now())
+}
+
+model AdminUser {
+  id         Int      @id @default(autoincrement())
+  username   String   @unique
+  password   String
+  created_at DateTime @default(now())
+}
+
+model SiteSetting {
+  id    Int    @id @default(autoincrement())
+  key   String @unique
+  value String @db.Text
+}
+
+model ChartGroup {
+  id            Int      @id @default(autoincrement())
+  name          String
+  color         String   @default("red")
+  data_color    String   @default("red")
+  display_order Int      @default(0)
+  games         ChartGroupGame[]
+}
+
+model ChartGroupGame {
+  id             Int        @id @default(autoincrement())
+  chart_group_id Int
+  game_id        Int
+  display_order  Int        @default(0)
+  chart_group    ChartGroup @relation(fields: [chart_group_id], references: [id], onDelete: Cascade)
+  game           Game       @relation(fields: [game_id], references: [id], onDelete: Cascade)
+
+  @@unique([chart_group_id, game_id])
+}
