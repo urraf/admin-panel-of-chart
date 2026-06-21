@@ -47,14 +47,12 @@ body {
   margin: 0;
   padding: 0;
   list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
 }
 
 .newnav ul li {
-  padding: 0px 15px;
-  width: auto;
+  float: left;
+  padding: 0px 50px;
+  width: 25%;
 }
 
 .newnav ul li a {
