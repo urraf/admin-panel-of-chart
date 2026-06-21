@@ -680,11 +680,13 @@ body {
 /* ===== RESPONSIVE ===== */
 @media only screen and (max-width: 768px) {
   .newnav ul {
-    gap: 10px;
+    display: block;
   }
   .newnav ul li {
-    padding: 0px !important;
-    width: 48%; /* 2 items per row on mobile */
+    padding: 0px 2px !important;
+    width: 25%; /* 4 items per row on mobile */
+    float: left;
+    box-sizing: border-box;
   }
   .newnav ul li a {
     padding: 10px 4px;
