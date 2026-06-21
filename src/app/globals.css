@@ -13,9 +13,9 @@ body {
 
 /* ===== EXACT COPY OF b2-satta.com bootstrap-theme.css ===== */
 
-.active {
+.active, .newnav ul li a.active {
   background: #fff !important;
-  color: #000;
+  color: #000 !important;
   text-decoration: none;
   box-shadow: 2px 2px rgba(255,216,100,0.9);
 }
