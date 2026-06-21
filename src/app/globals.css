@@ -47,12 +47,14 @@ body {
   margin: 0;
   padding: 0;
   list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .newnav ul li {
-  float: left;
-  padding: 0px 50px;
-  width: 25%;
+  padding: 0px 15px;
+  width: auto;
 }
 
 .newnav ul li a {
@@ -680,15 +682,11 @@ body {
 /* ===== RESPONSIVE ===== */
 @media only screen and (max-width: 768px) {
   .newnav ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     gap: 10px;
   }
   .newnav ul li {
     padding: 0px !important;
     width: 48%; /* 2 items per row on mobile */
-    float: none;
   }
   .newnav ul li a {
     padding: 10px 4px;
