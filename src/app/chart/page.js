@@ -152,19 +152,19 @@ export default function MonthlyCombinedChartPage() {
           </div>
         </div>
       </section>
-      <section className="newtable" style={{marginBottom: '20px'}}>
+      <section className="tabel3" style={{marginBottom: '20px'}}>
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-12 nopadding">
               <div className="table-responsive">
-                <table className="table table-bordered table-striped" style={{backgroundColor: '#e6e6e6', marginBottom: 0}}>
+                <table className="table table-bordered" style={{backgroundColor: '#fff', marginBottom: 0}}>
                   <tbody>
                     {games.map((g) => (
                       <tr key={g.id}>
-                        <td style={{backgroundColor: '#6c757d', color: '#fff', fontWeight: 'bold', width: '25%'}}>{g.name}</td>
+                        <td className="table_chart_section2 col-md-2" style={{verticalAlign: 'middle'}}>{g.name}</td>
                         {[2026, 2025, 2024, 2023, 2022].map((y) => (
-                          <td key={y} className="text-center">
-                            <a href={`/chart/${g.id}/${y}`} style={{color: '#000', fontWeight: 'bold', textDecoration: 'none'}}>{y}</a>
+                          <td key={y} className="table_chart_section" style={{verticalAlign: 'middle'}}>
+                            <a href={`/chart/${g.id}/${y}`}>{y}</a>
                           </td>
                         ))}
                       </tr>

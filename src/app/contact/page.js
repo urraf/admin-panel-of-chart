@@ -83,14 +83,14 @@ export default function ContactPage() {
           <div className="row">
             <div className="col-md-12 nopadding">
               <div className="table-responsive">
-                <table className="table table-bordered">
+                <table className="table table-bordered" style={{backgroundColor: '#fff', marginBottom: 0}}>
                   <tbody>
                     {games.map((game, idx) => (
                       <tr key={idx}>
-                        <td className="table_chart_section2 col-md-2">{game.name}</td>
+                        <td className="table_chart_section2 col-md-2" style={{verticalAlign: 'middle'}}>{game.name}</td>
                         {years.map(year => (
-                          <td className="table_chart_section" key={year} style={{background:'#000'}}>
-                            <a href={`/chart?gameid=${game.id}&year=${year}`}>{year}</a>
+                          <td className="table_chart_section" key={year} style={{verticalAlign: 'middle'}}>
+                            <a href={`/chart/${game.id}/${year}`}>{year}</a>
                           </td>
                         ))}
                       </tr>
