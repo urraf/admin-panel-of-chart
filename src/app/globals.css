@@ -689,12 +689,8 @@ body {
     box-sizing: border-box;
   }
   .newnav ul li a {
-    padding: 10px 4px;
-    text-align: center;
-    border-radius: 8px;
-    text-transform: uppercase;
-    font-size: 13px;
-    width: 100%;
+    padding: 8px 2px;
+    font-size: 11px;
   }
   .sattalogo a {
     font-size: 32px;
