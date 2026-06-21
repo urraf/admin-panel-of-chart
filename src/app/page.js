@@ -105,18 +105,50 @@ export default function Home() {
                   <div id="clockbox">{clock}</div>
                 </div>
                 <p className="hintext">{settings.hindi_text || 'हा भाई यही आती हे सबसे पहले खबर रूको और देखो'}</p>
-                {todayData.length > 0 && (
-                  <div style={{marginTop: '20px', paddingBottom: '20px'}}>
-                    <h2 style={{color: '#fff', fontSize: '28px', fontWeight: 'bold'}}>
-                      <span style={{background: 'rgba(255,255,255,0.4)', padding: '2px 8px', marginRight: '5px'}}>
-                        {todayData.find(g => g.name === 'GALI B')?.name.split(' ')[0] || todayData[0].name.split(' ')[0]}
-                      </span>
-                      {(todayData.find(g => g.name === 'GALI B')?.name || todayData[0].name).split(' ').slice(1).join(' ')}
+                {settings.winner_text && (
+                  <div style={{
+                    marginTop: '15px',
+                    padding: '10px',
+                    background: 'rgba(255, 216, 0, 0.2)',
+                    border: '2px dashed #ffd800',
+                    borderRadius: '5px',
+                    color: '#ffd800',
+                    fontSize: '24px',
+                    fontWeight: 'bold',
+                    textTransform: 'uppercase'
+                  }}>
+                    🎉 {settings.winner_text} 🎉
+                  </div>
+                )}
+                {settings.flash_result_name && (
+                  <div style={{
+                    marginTop: '20px', 
+                    padding: '30px 20px', 
+                    backgroundColor: '#fff', 
+                    borderBottom: '10px solid #ffd800',
+                    borderRadius: '5px',
+                    maxWidth: '400px',
+                    margin: '20px auto',
+                    boxShadow: '0 4px 15px rgba(0,0,0,0.5)'
+                  }}>
+                    <h2 style={{
+                      color: '#d94e18', 
+                      fontSize: '48px', 
+                      fontWeight: '900', 
+                      margin: '0', 
+                      textTransform: 'uppercase',
+                      letterSpacing: '2px'
+                    }}>
+                      {settings.flash_result_name}
                     </h2>
-                    <div style={{fontSize: '40px', color: '#fff', fontWeight: 'bold', marginTop: '10px'}}>
-                      {todayData.find(g => g.name === 'GALI B')?.today_result !== '-' 
-                        ? todayData.find(g => g.name === 'GALI B')?.today_result 
-                        : (todayData.find(g => g.name === 'GALI B')?.yesterday_result || '59')}
+                    <div style={{
+                      fontSize: '72px', 
+                      color: '#000', 
+                      fontWeight: '900', 
+                      marginTop: '10px',
+                      lineHeight: '1'
+                    }}>
+                      {settings.flash_result_number || '-'}
                     </div>
                   </div>
                 )}
@@ -126,18 +158,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* DISAWAR FEATURED */}
+      {/* DYNAMIC GREEN BOX (e.g. DISAWAR FEATURED) */}
       <section className="sattadividerr" style={{backgroundImage: 'linear-gradient(#3ec24c,#b3b733)'}}>
         <div className="container">
           <div className="col-md-12 text-center" style={{padding: '20px 0'}}>
-            <a href="/chart/7/2026" className="gamenameeach" style={{textDecoration: 'none'}}>
-              <h4 style={{color:'#fff', fontWeight: 'bold', fontSize: '28px', margin: '10px 0'}}>DISAWAR</h4>
+            <a href={settings.green_box_link ? `/chart/${settings.green_box_link}/${currentYear}` : "#"} className="gamenameeach" style={{textDecoration: 'none'}}>
+              <h4 style={{color:'#fff', fontWeight: 'bold', fontSize: '28px', margin: '10px 0'}}>
+                {settings.green_box_name || 'DISAWAR'}
+              </h4>
             </a>
-            <p style={{color:'#ff00cb', fontSize:'18px', fontWeight:'bold', margin: '10px 0'}}>( 05:10 AM )</p>
+            <p style={{color:'#ff00cb', fontSize:'18px', fontWeight:'bold', margin: '10px 0'}}>
+              ( {settings.green_box_time || '05:10 AM'} )
+            </p>
             <strong style={{color:'#000', fontSize: '28px'}}>
-              {'{ ' + (disawar.yesterday_result || '--') + ' }'}
+              {'{ ' + (settings.green_box_result_1 || '--') + ' }'}
               <img src="/images/arrow.gif" alt="arrow" style={{margin: '0 10px', width: '25px'}} />
-              {'{ ' + (disawar.today_result || '--') + ' }'}
+              {'{ ' + (settings.green_box_result_2 || '--') + ' }'}
             </strong>
           </div>
         </div>
