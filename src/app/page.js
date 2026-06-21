@@ -290,10 +290,10 @@ export default function Home() {
                   <tbody>
                     {games.map((g) => (
                       <tr key={g.id}>
-                        <td style={{backgroundColor: '#6c757d', color: '#fff', fontWeight: 'bold', width: '25%'}}>{g.name}</td>
+                        <td className="forfirtcolor" style={{color: '#000', fontWeight: 'bold', width: '25%', verticalAlign: 'middle', borderBottom: '1px solid #333'}}>{g.name}</td>
                         {[2026, 2025, 2024, 2023, 2022].map((y) => (
-                          <td key={y} className="text-center">
-                            <a href={`/chart/${g.id}/${y}`} style={{color: '#000', fontWeight: 'bold', textDecoration: 'none'}}>{y}</a>
+                          <td key={y} className="text-center" style={{backgroundColor: '#fff', borderBottom: '1px solid #333', verticalAlign: 'middle'}}>
+                            <a href={`/chart/${g.id}/${y}`} style={{color: '#000', fontWeight: 'bold', textDecoration: 'none', display: 'block', padding: '5px'}}>{y}</a>
                           </td>
                         ))}
                       </tr>
