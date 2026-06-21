@@ -73,7 +73,7 @@ export default function AdminPage() {
   const loadData = async () => {
     try {
       const [gamesRes, adsRes, settingsRes, todayRes] = await Promise.all([
-        fetch('/api/games'), fetch('/api/advertisements'),
+        fetch('/api/games'), fetch('/api/promos'),
         fetch('/api/settings'), fetch('/api/results/today'),
       ]);
       const gamesData = await gamesRes.json();
@@ -219,12 +219,12 @@ export default function AdminPage() {
     try {
       const body = { title: adTitle, content: adContent, whatsapp_number: adWhatsapp, display_order: parseInt(adOrder) };
       if (editAdId) {
-        await fetch(`/api/advertisements/${editAdId}`, {
+        await fetch(`/api/promos/${editAdId}`, {
           method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body),
         });
         showMsg('Ad updated!');
       } else {
-        await fetch('/api/advertisements', {
+        await fetch('/api/promos', {
           method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body),
         });
         showMsg('Ad added!');
@@ -241,7 +241,7 @@ export default function AdminPage() {
 
   const handleDeleteAd = async (id) => {
     if (!confirm('Delete this ad?')) return;
-    await fetch(`/api/advertisements/${id}`, { method: 'DELETE' });
+    await fetch(`/api/promos/${id}`, { method: 'DELETE' });
     showMsg('Ad deleted!'); loadData();
   };
 

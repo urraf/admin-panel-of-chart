@@ -32,7 +32,7 @@ export default function Home() {
     Promise.all([
       fetch('/api/results/today').then(r => r.json()),
       fetch('/api/chart?year=' + new Date().getFullYear() + '&month=' + (new Date().getMonth() + 1)).then(r => r.json()),
-      fetch('/api/advertisements').then(r => r.json()),
+      fetch('/api/promos').then(r => r.json()),
       fetch('/api/settings').then(r => r.json()),
       fetch('/api/games').then(r => r.json())
     ]).then(([todayRes, chartRes, adsRes, settingsRes, gamesRes]) => {
@@ -183,8 +183,8 @@ export default function Home() {
       {ads.map((ad, idx) => (
         <section className="callbox" key={idx}>
           <div className="text-center">
-            <div className="column-ad">
-              <div className="card-body-ad" style={{
+            <div className="column-promo">
+              <div className="card-body-promo" style={{
                 boxSizing: 'border-box', flex: '1 1 auto', minHeight: '1px',
                 padding: '1rem 0.5rem', border: 'dashed red',
                 background: 'linear-gradient(to bottom, #ffd800, #ffffff)',
